@@ -85,7 +85,7 @@ $(document).ready(function(){
         $(".articles").empty();
         Obj.userInput = $("#giphy").val();
         if (Obj.userInput.length === 0){
-            alert("empty");
+            // alert("empty");
             return false;
         }else {
             createNewBtns(Obj.userInput);

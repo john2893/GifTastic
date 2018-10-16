@@ -60,7 +60,7 @@ $(document).ready(function(){
     Obj.userInput = $("#giphy").val();
 
     //Placing buttons already on the page
-    Obj.displayArr = ["The Office", "Tom & Jerry", "Funny Cat", "Hurricane"];
+    Obj.displayArr = ["The Office", "Tom & Jerry", "Funny Cat", "Hurricane", "programming", "cooking"];
     for (var j=0; j<Obj.displayArr.length; j++){
         createNewBtns(Obj.displayArr[j]);
     };
@@ -87,25 +87,27 @@ $(document).ready(function(){
         if (Obj.userInput.length === 0){
             alert("empty");
             return false;
-        };
+        }else {
+            createNewBtns(Obj.userInput);
+            // console.log(Obj.userInput);
+            $("#giphy").val("") ;
+            // $("button").on("click", function(){
+            //     alert("button clicked");
+            // })
+            $(".giphyBtn").on("click", function(e){
+                e.preventDefault();
+                // alert("button clicked");
+                $(".articles").empty();
+                Obj.value = $(this).attr("data-btn");
+                // Obj.displayArr.push(Obj.value);
+                // console.log(Obj.displayArr);
+                Obj.queryURL = "https://api.giphy.com/v1/gifs/search?q=" + 
+                Obj.value + "&api_key=dc6zaTOxFJmzC&limit=10";  
+                getFromWeb(Obj.queryURL);
+            });
+        }
   
-        createNewBtns(Obj.userInput);
-        // console.log(Obj.userInput);
-        $("#giphy").val(" ") ;
-        // $("button").on("click", function(){
-        //     alert("button clicked");
-        // })
-        $(".giphyBtn").on("click", function(e){
-            e.preventDefault();
-            // alert("button clicked");
-            $(".articles").empty();
-            Obj.value = $(this).attr("data-btn");
-            // Obj.displayArr.push(Obj.value);
-            // console.log(Obj.displayArr);
-            Obj.queryURL = "https://api.giphy.com/v1/gifs/search?q=" + 
-            Obj.value + "&api_key=dc6zaTOxFJmzC&limit=10";  
-            getFromWeb(Obj.queryURL);
-        });
+
     });
 
     //Pause and Start the gifs.

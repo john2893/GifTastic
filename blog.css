@@ -19,6 +19,11 @@
   font-size: 1.2em;
   text-transform:uppercase;
 }
+p {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
 
 
 .blog-header {
